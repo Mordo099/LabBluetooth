@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("MiTag", "Hola desde log");
 
+
         bluetooth = new BluetoothSPP(this);
 
         connect = (Button) findViewById(R.id.connect);
