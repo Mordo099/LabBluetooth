@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("MiTag", "Hola desde log");
 
         bluetooth = new BluetoothSPP(this);
 
@@ -76,6 +79,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bluetooth.send(OFF, true);
+            }
+        });
+        bluetooth.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
+            public void onDataReceived(byte[] data, String message) {
+                Log.d("MiTag", message);
+                String string = message;
+                String[] parts = string.split(" ");
+                String part1 = parts[0];
+                String part2 = parts[1];
+                String part3 = parts[2];
+                String part4 = parts[3];
+                String part5 = parts[4];
+                String part6 = parts[5];
+                String part7 = parts[6];
+                Toast.makeText(MainActivity.this, "Humedad del ambiente = "+part2+"\n"+"Temperatura del ambiente = "+part3+" ºC"+"\n"+"pH = "+part5+"\n"+"Humedad del suelo = "+part6+"\n"+"Salinidad = "+part7, Toast.LENGTH_SHORT).show();
             }
         });
 
