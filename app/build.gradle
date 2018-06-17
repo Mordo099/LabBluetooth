@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.androidsmile.labbluetooth"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -28,5 +28,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     implementation 'com.akexorcist:bluetoothspp:1.0.0'
+    implementation 'com.jjoe64:graphview:4.2.1'
+
+
 
 }
